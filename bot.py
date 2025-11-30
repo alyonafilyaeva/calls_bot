@@ -1,6 +1,7 @@
 import logging
 import time
 import jwt
+import os
 import json
 import aiohttp
 import pandas as pd
@@ -14,12 +15,11 @@ from aiogram import F
 # ------------------------------------------
 # НАСТРОЙКИ — ЗАПОЛНИ СВОИ ДАННЫЕ
 # ------------------------------------------
-BOT_TOKEN = "8509902877:AAFVw6goYco9ZMejxu2ihBiQUtmdprZ0tZI"
-YANDEX_FOLDER_ID = "b1ghhfs4me4na82dfvjq"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+YANDEX_FOLDER_ID = os.getenv("YANDEX_FOLDER_ID")
 
 # Загружаем сервисный аккаунт
-with open("service-account.json") as f:
-    SA = json.load(f)
+SA = json.loads(os.getenv("SERVICE_ACCOUNT_JSON"))
 
 SERVICE_ACCOUNT_ID = SA["service_account_id"]
 KEY_ID = SA["id"]
